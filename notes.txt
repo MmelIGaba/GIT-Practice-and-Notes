@@ -1,0 +1,66 @@
+Graph:
+Directed Acyclic Graph.
+- node -> (edges).
+- Certain direction.
+- direction, relationship.
+- Acyclic means non-circular.
+
+GIT's DAG:
+
+node1 <- node2 <- node3
+       ^          |
+	\node3   <
+
+- commits = node, edge points to parent.  commit3 < - commit2....
+
+
+
+GIT IDs:
+
+Objects;
+1. Commit object - txt file (msg, ref parent, ref root tree, commit info).
+2. Annotated tag - ref to specific commit.
+3. Tree - Directories and filenames in project.\
+4. Blob - file content in project.               --> object store
+
+IDs;
+- Name of obj.
+- 40 char hex string.
+- Obj ID, SHA-1, hash and checksum.
+
+- Avalanche -> designed to drastically prod diffs SHA-1s in similar content.
+
+
+Short Name - GIT IDs.
+?	First 4 - 10 characters.
+
+
+Reference:
+User-friendly name points to:
+?	Commit sha-1 val.
+?	Another ref (symbolic ref).
+Head -> Master: 2 refs
+git show HEAD | instead of the SHA-1 
+
+Branch Labels & the Head:
+?	Master, name of branch (default).
+?	All commit got to it, if no branch is created.
+?	Branch label:
+- points to the recent commit in the branch. (tip)
+- Implemented as reference.
+- Stored in .git/refs/heads.
+?	HEAD:
+- ref to current commit.
+- Usually points to the branch label of the current branch.
+- One HEAD per repo.
+- .git/HEAD
+
+Referencing To prior commits (~ and ^):
+?	git show HEAD~ | git show master^.. (shows info of previous commit), append a number to specify how many commits back.
+?	git show master~3 | git show master^3... (3 commits back - great grand parent). 
+Tags:
+?	Lightweight - simple ref - to commit obj
+?	Annotated:
+- Full git obj, refs commit.
+- Includes author, tag date, tag msg, commit ID
+- Optionally, it can be signed and verified with GNU Privacy Guard. GPG
